@@ -21,6 +21,8 @@ export function Header() {
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // When a mouse hover has just opened the menu, a click on the trigger should keep it open, not toggle it shut.
+  const hoverOpenedAt = useRef(0);
 
   // Close any open navigation when the route changes (adjusting state during render).
   const [lastPath, setLastPath] = useState(pathname);
@@ -105,7 +107,17 @@ export function Header() {
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
   const openHover = () => {
     if (hoverTimer.current) clearTimeout(hoverTimer.current);
-    setServicesOpen(true);
+    setServicesOpen((open) => {
+      if (!open) hoverOpenedAt.current = Date.now();
+      return true;
+    });
+  };
+  const toggleServices = () => {
+    if (Date.now() - hoverOpenedAt.current < 800) {
+      setServicesOpen(true);
+      return;
+    }
+    setServicesOpen((v) => !v);
   };
   const closeHover = () => {
     hoverTimer.current = setTimeout(() => setServicesOpen(false), 180);
@@ -135,7 +147,7 @@ export function Header() {
                       type="button"
                       aria-expanded={servicesOpen}
                       aria-controls="services-menu"
-                      onClick={() => setServicesOpen((v) => !v)}
+                      onClick={toggleServices}
                       className={`eyebrow flex items-center gap-2 px-3 py-3 transition-colors hover:text-cranberry ${isActive(item.href) ? "text-cranberry" : ""}`}
                     >
                       {item.label}

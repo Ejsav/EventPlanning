@@ -99,13 +99,13 @@ export default function HomePage() {
               alt="A couple embraces on a rocky shoreline under an overcast sky, her long veil spread across the stones"
               ratio="4/5"
               sizes="(min-width: 1024px) 40vw, 100vw"
-              focus="50% 40%"
+              focus="50% 22%"
               priority
-              className="lg:h-full [&>.plate]:lg:!aspect-auto [&>.plate]:lg:h-full"
+              className="lg:h-full [&>.plate]:md:!aspect-[3/2] [&>.plate]:lg:!aspect-auto [&>.plate]:lg:h-full"
             />
             <p className="eyebrow mt-3 flex justify-between text-granite lg:absolute lg:-bottom-8 lg:left-0 lg:right-0">
-              <span>Plate I — On the Sound</span>
-              <span>41.2° N</span>
+              <span>Plate I — Salt air &amp; stone</span>
+              <span>Connecticut · New England</span>
             </p>
           </div>
         </div>

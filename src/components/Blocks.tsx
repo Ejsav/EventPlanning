@@ -8,7 +8,7 @@ import { Plus } from "./Icons";
 /** Horizon-line timeline: each step is a stone resting on the line of the Sound. */
 export function ProcessTimeline({ steps = process, dark = false }: { steps?: typeof process; dark?: boolean }) {
   return (
-    <ol className="relative grid gap-0 md:grid-cols-3 md:gap-x-10 md:gap-y-14 xl:grid-cols-6 xl:gap-x-8">
+    <ol className="relative grid gap-0 overflow-x-clip md:grid-cols-3 md:gap-x-10 md:gap-y-14 xl:grid-cols-6 xl:gap-x-8">
       {steps.map((s, i) => (
         <li key={s.title} className="relative grid grid-cols-[2.25rem_1fr] gap-x-5 pb-10 md:block md:pb-0" data-reveal style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}>
           {/* rail */}

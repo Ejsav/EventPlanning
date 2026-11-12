@@ -4,6 +4,7 @@ out
 .cache
 .data
 .env
+!.env.example
 .env*.local
 *.tsbuildinfo
 next-env.d.ts
